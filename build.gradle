@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id "org.springframework.boot" version "2.1.6.RELEASE"
+}
+
+group 'com.target.sample'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter'
+    compile 'org.codehaus.groovy:groovy-all:2.4.15'
+    compile "com.fasterxml.jackson.core:jackson-databind:2.9.8"
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.spockframework:spock-core:1.2-groovy-2.4'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'barren-land'
+    version =  '1.0.0'
+}
+
+test {
+    jvmArgs '-Xss256m'
+    testLogging {
+        showStandardStreams = false
+    }
+}
